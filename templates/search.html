@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Search &middot; FinFlow{% endblock %}
+{% block content %}
+  <h1>Search accounts</h1>
+  <form method="get" action="{{ url_for('search.search') }}" class="form">
+    <label>Account number <input type="text" name="q" value="{{ term }}"></label>
+    <button type="submit">Search</button>
+  </form>
+  {% if term %}
+  <table class="data">
+    <thead>
+      <tr><th>Number</th><th>Type</th><th class="num">Balance</th></tr>
+    </thead>
+    <tbody>
+      {% for r in results %}
+      <tr>
+        <td>{{ r.account_number }}</td>
+        <td>{{ r.account_type }}</td>
+        <td class="num">${{ '%.2f' | format(r.balance_cents / 100) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+{% endblock %}

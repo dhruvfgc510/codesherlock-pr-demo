@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Log in &middot; FinFlow{% endblock %}
+{% block content %}
+  <h1>Log in</h1>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <p class="muted">{{ messages[0] }}</p>
+    {% endif %}
+  {% endwith %}
+  <form method="post" class="form">
+    <label>Email <input type="email" name="email" required></label>
+    <label>Password <input type="password" name="password" required></label>
+    <button type="submit">Log in</button>
+  </form>
+{% endblock %}

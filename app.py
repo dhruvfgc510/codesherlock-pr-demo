@@ -7,6 +7,9 @@ from flask import Flask
 import db
 from routes.home import home_bp
 from routes.accounts import accounts_bp
+from routes.auth import auth_bp
+from routes.payments import payments_bp
+from routes.search import search_bp
 
 
 def create_app():
@@ -21,6 +24,9 @@ def create_app():
     db.init_app(app)
     app.register_blueprint(home_bp)
     app.register_blueprint(accounts_bp)
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(payments_bp)
+    app.register_blueprint(search_bp)
 
     @app.cli.command("init-db")
     def init_db_command():
