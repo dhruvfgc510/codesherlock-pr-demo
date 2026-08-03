@@ -10,11 +10,14 @@ from routes.accounts import accounts_bp
 from routes.auth import auth_bp
 from routes.payments import payments_bp
 from routes.search import search_bp
+from routes.support import support_bp
 
 
 def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-only-change-me")
+    app.config["SESSION_COOKIE_HTTPONLY"] = False
+    app.config["SESSION_COOKIE_SECURE"] = False
     app.config["DATABASE"] = os.environ.get(
         "DATABASE", os.path.join(app.instance_path, "finflow.sqlite")
     )
@@ -27,6 +30,7 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(payments_bp)
     app.register_blueprint(search_bp)
+    app.register_blueprint(support_bp)
 
     @app.cli.command("init-db")
     def init_db_command():
