@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Flask instance data (local SQLite DB lives here)
+instance/
+*.sqlite
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
