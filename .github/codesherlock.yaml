@@ -1,6 +1,8 @@
 # CodeSherlock custom configuration (test: additional_instructions behavior)
 preferred_characteristics: ["timepass"]
 
+severity_levels: [critical, high, medium, low]
+
 additional_instructions:
   - No exposed secrets or API keys
   - No console.log , print , System.out.println left in code
