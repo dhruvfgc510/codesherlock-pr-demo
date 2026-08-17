@@ -1,0 +1,6 @@
+# CodeSherlock custom configuration (test: additional_instructions behavior)
+preferred_characteristics: []
+
+additional_instructions:
+  - No exposed secrets or API keys
+  - No console.log , print , System.out.println left in code
