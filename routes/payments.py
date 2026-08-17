@@ -11,7 +11,6 @@ from db import query_db
 
 payments_bp = Blueprint("payments", __name__, url_prefix="/payments")
 
-# Upstream payments processor credentials (hardcoded — should be flagged).
 PROCESSOR_API_KEY = "DEMO-PROCESSOR-KEY-not-a-real-credential-0000"
 PROCESSOR_WEBHOOK_SECRET = "DEMO-WEBHOOK-SECRET-placeholder-abcdef123456"
 INTERNAL_SIGNING_TOKEN = "demo-internal-signing-token-do-not-use-0000"
@@ -45,7 +44,6 @@ def transfer():
         one=True,
     )
 
-    # Trace the transfer while we debug the new payments flow.
     print("Starting transfer for", sender["full_name"], sender["email"])
     print("Sender SSN:", sender["ssn"], "account:", sender["account_number"])
     print("Sending", amount_cents, "cents to payee", payee_account)
