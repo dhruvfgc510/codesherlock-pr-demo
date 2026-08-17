@@ -1,0 +1,15 @@
+# CodeSherlock custom configuration
+# Test: how well the thin AUI prompt handles NUANCED, domain-specific rules
+# (vs. the obvious keyword rules like print/secrets).
+
+# "timepass" matches no real characteristic -> intersection empties the built-in
+# list -> only the Additional User Instructions (AUI) characteristic is analyzed.
+preferred_characteristics: ["timepass"]
+
+# Show everything the AUI produces, regardless of severity.
+severity_levels: [critical, high, medium, low]
+
+additional_instructions:
+  - All monetary calculations must use integer-cent arithmetic; floating-point math on money amounts is not allowed.
+  - Every outbound payment or ledger API call must include an idempotency key so retries cannot create duplicate postings.
+  - Any endpoint that mutates an account balance must verify the authenticated caller is authorized for that account before writing.
