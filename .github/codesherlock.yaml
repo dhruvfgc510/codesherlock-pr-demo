@@ -1,5 +1,5 @@
 # CodeSherlock custom configuration (test: additional_instructions behavior)
-preferred_characteristics: []
+preferred_characteristics: ["timepass"]
 
 additional_instructions:
   - No exposed secrets or API keys
