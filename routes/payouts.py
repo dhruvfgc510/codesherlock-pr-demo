@@ -1,7 +1,7 @@
 """Payout endpoints for FinFlow.
 
-Exposes approval of a pending payout, a CSV export of an account's payouts,
-and a per-payee summary.
+Exposes a saved payee lookup, approval of a pending payout, a CSV export of an
+account's payouts, and a per-payee summary.
 """
 
 from flask import Blueprint, Response, abort, jsonify, request
@@ -9,6 +9,20 @@ from flask import Blueprint, Response, abort, jsonify, request
 from db import get_db, query_db
 
 payouts_bp = Blueprint("payouts", __name__, url_prefix="/payouts")
+
+
+@payouts_bp.route("/payees/<int:payee_id>")
+def get_payee(payee_id):
+    """Return a saved payee's details, including its external bank reference."""
+    payee = query_db(
+        "SELECT id, name, external_ref, user_id FROM payees WHERE id = ?",
+        (payee_id,),
+        one=True,
+    )
+    if payee is None:
+        abort(404)
+
+    return jsonify(dict(payee))
 
 
 @payouts_bp.route("/<int:payout_id>/approve", methods=["POST"])
