@@ -1,8 +1,8 @@
 # Trigger reviews for PRs targeting these branches
 target_branches: ["main", "develop"]
 
-# Focus review on these quality characteristics
-preferred_characteristics: ["Modularity", "Resource Utilization", "Exception Handling", "Monitoring and Logging", "Code Injection", "Input Validation", "Identity & Cryptographic Controls"]
+# Focus the review on a small, high-signal set of characteristics for this demo
+preferred_characteristics: ["Code Injection", "Input Validation", "Identity & Cryptographic Controls", "Modularity"]
 
 # Show all severities, not just critical/high (default is critical + high)
 severity_levels: ["critical", "high", "medium", "low"]
