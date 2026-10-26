@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}New transfer &middot; FinFlow{% endblock %}
+{% block content %}
+  <h1>New transfer</h1>
+  <form class="form" method="post" action="{{ url_for('transfers.create_transfer') }}">
+    <label>From account
+      <input type="text" name="from_account" placeholder="FF-1001" required>
+    </label>
+    <label>To account
+      <input type="text" name="to_account" placeholder="FF-2001" required>
+    </label>
+    <label>Amount
+      <input type="text" name="amount" placeholder="100.00" required>
+    </label>
+    <label>Note
+      <input type="text" name="note" placeholder="Optional">
+    </label>
+    <button type="submit">Send</button>
+  </form>
+
+  <h2>Accounts</h2>
+  <ul class="muted">
+    {% for a in accounts %}
+      <li>{{ a.account_number }} &middot; ${{ '%.2f' | format(a.balance_cents / 100) }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
