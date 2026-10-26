@@ -1,0 +1,8 @@
+# Trigger reviews for PRs targeting these branches
+target_branches: ["main", "develop"]
+
+# Evaluate the full set of quality characteristics
+preferred_characteristics: ["Modularity", "Resource Utilization", "Exception Handling", "Monitoring and Logging", "Code Injection", "Input Validation", "Identity & Cryptographic Controls"]
+
+# Show only critical and high severity findings
+severity_levels: ["critical", "high"]
