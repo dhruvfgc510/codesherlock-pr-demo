@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Transfer &middot; FinFlow{% endblock %}
+{% block content %}
+  <h1>Transfer funds</h1>
+  <form method="post" class="form">
+    <label>From account <input type="text" name="from_account" placeholder="FF-1001" required></label>
+    <label>To account <input type="text" name="to_account" placeholder="FF-2001" required></label>
+    <label>Amount <input type="text" name="amount" placeholder="50.00" required></label>
+    <button type="submit">Send</button>
+  </form>
+{% endblock %}
